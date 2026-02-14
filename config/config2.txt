@@ -1,9 +1,9 @@
 time,cmd,ID,loseFrame,loseACK
-1,preSend,1,flase,false
+1,preSend,1,false,false
 2,preSend,2,false,false
 3,preSend,3,true,false
-4,preSend,3,false,false
-5,preSend,5,flase,false
+4,preSend,4,false,false
+5,preSend,5,false,false
 6,tick,,,
 7,tock,,,
 8,rcv,,,

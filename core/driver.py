@@ -20,7 +20,7 @@ class Driver:
             for row in reader:
                 commands.append(row)
         return commands
-    
+
     def run(self):
         for row in self.commands:
             self.current_time = int(row["time"])
@@ -38,13 +38,16 @@ class Driver:
                 self.client.preSend(frame, self.current_time)
             
             elif cmd == "tick":
+                #Switched to Check timeout last
+                if self.in_flight_ack is not None:
+                    self.client.handle_ack(self.in_flight_ack, self.current_time)
+                    self.in_flight_ack = None
+
                 sent_frame = self.client.tick(self.current_time)
                 if sent_frame:
                     self.in_flight_frame = sent_frame
 
-                if self.in_flight_ack is not None:
-                    self.client.handle_ack(self.in_flight_ack, self.current_time)
-                    self.in_flight_ack = None
+
 
             elif cmd == "tock":
                 if self.in_flight_frame:

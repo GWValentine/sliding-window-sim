@@ -21,11 +21,12 @@ def main():
     server = ServerAdapter(rcv_buffer, rcv_window)
 
     # Config file path
-    config_path = "config/config1.txt"
+    config_path = "config/config3.txt"
+    print(f"Using: {config_path}")
 
     # Create Driver
     driver = Driver(client, server, config_path)
     driver.run()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
